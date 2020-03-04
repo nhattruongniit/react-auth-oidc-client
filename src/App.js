@@ -1,23 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+// servicers
+import { AuthService } from './services/AuthService'
 
 function App() {
+  const authService = new AuthService();
+
+  const handleLogin = async () => {
+    const res = await authService.login();
+
+    console.log('======handleLogin========', res)
+  }
+
+  const handleGetUser = async () => {
+    const res = await authService.getUser();
+
+    console.log('======handleGetUser========', res)
+  }
+
+  const handleCallApi = async () => {
+
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p> Test OIDC CLIENT</p>
+        <button type="button" onClick={handleLogin}>Login oidc client</button>
+        <button type="button" onClick={handleGetUser}>Get User</button>
+        <button type="button" onClick={handleCallApi}>Call API</button>
       </header>
     </div>
   );
